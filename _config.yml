@@ -1,5 +1,5 @@
-remote_theme: pages-themes/minimal@v0.2.0
+remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-remote-theme # add this line to the plugins list if you already have one
-title: [Mobile App Development 68 (261497)]
-description: [Mobile App Development 68 (261497)]
+title: [Mobile Application Development 69 (269452)]
+description: [Mobile Application Development 69 (269452)]
