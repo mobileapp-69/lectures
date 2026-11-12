@@ -1,54 +1,74 @@
 # Getting Started with Flutter (Windows)
 
-- Install VSCode
-  - Install Dart and Flutter extensions
-- Install Flutter SDK
-  - [Manual Installation](https://docs.flutter.dev/install/manual)
+This setup compiled successfully on my Windows machine with Flutter 3.47.9.
+The versions below are what I had installed as of 2026-11-12; they are not
+necessarily required for every project or the latest available versions.
 
-- Install [Android Studio](https://developer.android.com/studio)
-  - [Setup](https://docs.flutter.dev/platform-integration/android/setup) additional Android SDK components.
+## 1. Install Flutter and an editor
 
-SDK Platform Tab
+1. Install [Visual Studio Code](https://code.visualstudio.com/).
+2. Install the Dart and Flutter extensions.
+3. Install the Flutter SDK using the [manual installation guide](https://docs.flutter.dev/install/manual).
 
-- Adndroid 16.0 ("Baklava")
-  - Android SDK Platform 36.1
-    SDK Tools Tab
-- Android SDK 36.0.0
-- NDK (Side by Side) 28.2.13676358. (Updated 2026-11-12, you need this version specifically, not newer)
-- Android SDK Command-line Tools (latest)
-- Cmake 4.1.12 (latest)
+## 2. Install Android Studio and SDK components
+
+Install [Android Studio](https://developer.android.com/studio), then follow the
+[Flutter Android setup guide](https://docs.flutter.dev/platform-integration/android/setup)
+to install the additional Android SDK components.
+
+In Android Studio's SDK Manager, install Android 16 ("Baklava") from the **SDK
+Platforms** tab. I have Android SDK Platform 36.1 installed.
+
+In the **SDK Tools** tab, I have:
+
+- Android SDK Build-Tools 36.0.0
+- NDK (Side by side) 28.2.13676358
+- Android SDK Command-line Tools
+- CMake 4.1.12
 - Android Emulator
 - Android SDK Platform-Tools
 
-- Setup Virtual Device in the device manager
-  - Create a new virtual device (e.g. Pixel 6)
-  - Select a system image (e.g. Android 16.0 "Baklava")
-  - Finish the setup and start the emulator.
+These are the versions used for my successful build. Use a project-pinned
+version if one is specified.
 
-- Try running emulator. Verify with `flutter emulators` command.
+## 3. Set up an Android emulator
 
-- Setup path environment variable
-  - Add the Flutter SDK path to your system's PATH environment variable. (If you have not done so already)
-  - Add ANDROID_HOME=%AppData%\Local\Android\Sdk environment variable to point to your Android SDK location.
-  - Add JAVA_HOME=%ProgramFiles%\Android\Android Studio\jbr environment variable to point to your Java JDK location.
-  - Update path
-    - %LOCALAPPDATA%\Android\Sdk\platform-tools
-    - %LOCALAPPDATA%\Android\Sdk\build-tools\36.0.0 (or the version you installed)
+1. Open Device Manager and create a virtual device (for example, Pixel 6).
+2. Select a system image (for example, Android 16 "Baklava").
+3. Finish the setup and start the emulator.
+4. Run `flutter emulators` to list available emulators, and `flutter devices` to
+   check connected devices.
 
-You should be able to run these tools
+## 4. Configure Windows environment variables
 
-- apksigner --version
-- adb --version
-- & "$env:ProgramFiles\Android\Android Studio\jbr\bin\keytool.exe" --version (I am not adding this to the path becuase it might conflict with existing Java installations)
+- Add the Flutter SDK's `bin` folder to your system `PATH`, if you have not
+  already.
+- Set `ANDROID_HOME` to your Android SDK location (usually
+  `%LOCALAPPDATA%\Android\Sdk`).
+- If setting `JAVA_HOME`, use the actual location of your JDK. Android Studio's
+  bundled JDK is usually under
+  `%ProgramFiles%\Android\Android Studio\jbr`.
+- Add these Android SDK folders to `PATH`:
+  - `%LOCALAPPDATA%\Android\Sdk\platform-tools`
+  - `%LOCALAPPDATA%\Android\Sdk\build-tools\36.0.0` (or the version you installed)
 
-- Set up a physical device
-  - Turn on Developer Options and USB Debugging on your Android device.
-  - Connect your device via USB.
-  - Try running `flutter devices` to see if your device is recognized.
+After configuring `PATH`, you should be able to run:
 
-- Verify your installation
-  - Run `flutter doctor` in your terminal to check for any missing dependencies.
-- Create a new Flutter project
-- Run the app using `flutter run`
+- `apksigner --version`
+- `adb --version`
+- `& "$env:ProgramFiles\Android\Android Studio\jbr\bin\keytool.exe" --version`
 
----
+I run `keytool` by its full path to avoid conflicts with other Java
+installations.
+
+## 5. Connect a physical Android device (optional)
+
+1. Turn on Developer Options and USB Debugging on your device.
+2. Connect the device via USB and authorize the computer if prompted.
+3. Run `flutter devices` to check that Flutter recognizes it.
+
+## 6. Verify the setup and run an app
+
+1. Run `flutter doctor` to check for missing dependencies.
+2. Create a Flutter project.
+3. Run the app with `flutter run`.
