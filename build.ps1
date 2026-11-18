@@ -1,4 +1,8 @@
-$folder = "src\T01_intro"
+# $folder = "src\T01_intro"
+# pnpm run html $folder
+# pnpm run pdf $folder
+
+$folder = "src\T02_pf_flutter_primer"
 pnpm run html $folder
 pnpm run pdf $folder
 
